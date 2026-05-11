@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { BrainCircuit, Terminal, Layout, Target } from "lucide-react";
 

@@ -1,6 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { User, MapPin, GraduationCap, Target, Cpu } from "lucide-react";
+import { User, MapPin, GraduationCap, Target } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
