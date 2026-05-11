@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Terminal, Send, Instagram } from "lucide-react";
+import { MapPin, Phone, Terminal, Send } from "lucide-react";
+
+// Manual Instagram Icon to avoid version conflicts
+const InstagramIcon = ({ size }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+);
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -114,7 +119,7 @@ const ContactSection = () => {
                     className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-gray-400 transition-all hover:text-purple-400 hover:border-purple-500/50"
                   >
                     {social.icon === "terminal" ? <Terminal size={22} /> : 
-                     social.icon === "instagram" ? <Instagram size={22} /> :
+                     social.icon === "instagram" ? <InstagramIcon size={22} /> :
                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{social.svg}</svg>}
                   </motion.a>
                 ))}
