@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { User, MapPin, GraduationCap, Target, Cpu } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,7 +18,7 @@ const itemVariants = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
   },
 };
 
@@ -28,105 +29,94 @@ const AboutSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="min-h-screen bg-white py-20 px-6 flex items-center justify-center font-sans relative overflow-hidden"
+      className="min-h-screen bg-[#030014] py-24 px-6 flex items-center justify-center font-sans relative overflow-hidden"
     >
-      {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gray-100 rounded-full blur-3xl -z-10 opacity-50 transform translate-x-1/3 -translate-y-1/3"></div>
+      {/* Decorative background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
         
-        {/* LEFT SIDE: Image */}
+        {/* LEFT SIDE: Image with futuristic frame */}
         <motion.div 
-          className="md:col-span-5 relative flex justify-center"
+          className="lg:col-span-5 relative flex justify-center order-2 lg:order-1"
           variants={itemVariants}
         >
-          {/* Subtle background shape behind image */}
-          <div className="absolute inset-0 bg-[#EFEFEF] rounded-tl-3xl rounded-br-3xl transform translate-x-4 translate-y-4 -z-10"></div>
-          
-          <div className="relative w-72 h-80 sm:w-80 sm:h-96 md:w-full md:h-[500px] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-xl">
-            <img 
-              src="/profile.jpg" 
-              alt="Divyank Singh" 
-              className="w-full h-full object-cover grayscale transition-transform duration-700 hover:scale-105"
-            />
+          <div className="relative group">
+            {/* Animated border glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+            
+            <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-[550px] overflow-hidden rounded-3xl bg-[#030014] border border-white/10 shadow-2xl">
+              <img 
+                src="/profile.jpg" 
+                alt="Divyank Singh" 
+                className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-60"></div>
+            </div>
           </div>
         </motion.div>
 
         {/* RIGHT SIDE: Text Content */}
         <motion.div 
-          className="md:col-span-7 flex flex-col items-start justify-center text-left"
+          className="lg:col-span-7 flex flex-col items-start justify-center text-left order-1 lg:order-2"
           variants={containerVariants}
         >
-          <motion.span variants={itemVariants} className="text-gray-500 font-bold tracking-[0.2em] uppercase text-sm md:text-base mb-2">
-            Get to know me
-          </motion.span>
+          <motion.div variants={itemVariants} className="flex items-center space-x-3 mb-4">
+            <span className="text-purple-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm">
+              The Journey
+            </span>
+            <div className="w-12 h-[1px] bg-purple-500/50" />
+          </motion.div>
           
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 relative">
-            About Me
-            <div className="absolute -bottom-2 left-0 w-16 h-1.5 bg-[#FFC107] rounded-full"></div>
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-black text-white mb-8">
+            Designing <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Futures.</span>
           </motion.h2>
 
-          <div className="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+          <div className="space-y-6 text-gray-400 text-lg leading-relaxed max-w-2xl mb-10 font-medium">
             <motion.p variants={itemVariants}>
               I’m a focused and determined developer currently building a strong foundation in full-stack development, with a growing interest in artificial intelligence and real-world problem solving.
             </motion.p>
             <motion.p variants={itemVariants}>
-              After facing academic setbacks, I made a conscious decision to take a step back, rebuild from scratch, and approach my journey with discipline and clarity. This phase of my life is dedicated to consistent learning, skill development, and creating meaningful projects that reflect my growth.
-            </motion.p>
-            <motion.p variants={itemVariants}>
-              Alongside my academic preparation, I’m actively working on developing practical skills in modern web technologies and software development. My goal is not just to learn concepts, but to apply them in real-world scenarios and continuously improve through execution. I believe in long-term consistency, self-improvement, and building a career that stands out through both skill and mindset.
+              My journey is defined by a commitment to **consistency** and **clarity**. I believe in the power of learning by doing—rebuilding from scratch and approaching every challenge with a discipline that turns setbacks into stepping stones.
             </motion.p>
           </div>
 
-          {/* Highlight Line */}
-          <motion.div 
-            variants={itemVariants} 
-            className="border-l-4 border-[#FFC107] pl-4 py-2 bg-yellow-50 mb-8 w-full rounded-r-md"
-          >
-            <p className="text-gray-900 font-semibold italic text-lg">
-              "Currently focused on building projects, strengthening fundamentals, and preparing for high-level opportunities in tech."
-            </p>
-          </motion.div>
-
-          {/* Details Grid */}
-          <motion.div variants={itemVariants} className="w-full grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-            <div className="border-b border-gray-200 pb-2">
-              <span className="block text-xs uppercase tracking-wider font-bold text-gray-400 mb-1">Name</span>
-              <span className="font-semibold text-gray-900">Divyank Singh</span>
-            </div>
-            <div className="border-b border-gray-200 pb-2">
-              <span className="block text-xs uppercase tracking-wider font-bold text-gray-400 mb-1">Location</span>
-              <span className="font-semibold text-gray-900">Surat, Gujarat</span>
-            </div>
-            <div className="border-b border-gray-200 pb-2">
-              <span className="block text-xs uppercase tracking-wider font-bold text-gray-400 mb-1">Education</span>
-              <span className="font-semibold text-gray-900">Engineering Student (CSE)</span>
-            </div>
-            <div className="border-b border-gray-200 pb-2">
-              <span className="block text-xs uppercase tracking-wider font-bold text-gray-400 mb-1">Focus Areas</span>
-              <span className="font-semibold text-gray-900">Full-Stack Dev, AI/ML (beginner)</span>
-            </div>
-            <div className="border-b border-gray-200 pb-2 sm:col-span-2">
-              <span className="block text-xs uppercase tracking-wider font-bold text-gray-400 mb-1">Current Goal</span>
-              <span className="font-semibold text-gray-900">Skill-building + strong portfolio + high-paying MNC role</span>
-            </div>
-            <div className="border-b border-gray-200 pb-2 sm:col-span-2">
-              <span className="block text-xs uppercase tracking-wider font-bold text-gray-400 mb-1">Status</span>
-              <span className="font-semibold text-gray-900">Open to learning, internships, and collaboration</span>
-            </div>
+          {/* Details Grid: Glassmorphism Cards */}
+          <motion.div variants={itemVariants} className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            {[
+              { icon: User, label: "Name", value: "Divyank Singh" },
+              { icon: MapPin, label: "Location", value: "Pune, Maharashtra" },
+              { icon: GraduationCap, label: "Education", value: "B.Tech CSE (AI/ML)" },
+              { icon: Target, label: "Focus", value: "Full-Stack & AI" }
+            ].map((detail, i) => (
+              <div key={i} className="flex items-center space-x-4 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-purple-500/30 transition-colors group">
+                <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                  <detail.icon size={20} />
+                </div>
+                <div>
+                  <span className="block text-[10px] uppercase tracking-widest text-gray-500 font-bold">{detail.label}</span>
+                  <span className="text-sm font-bold text-gray-200">{detail.value}</span>
+                </div>
+              </div>
+            ))}
           </motion.div>
           
-          <motion.button 
-            variants={itemVariants}
-            whileHover={{ 
-              scale: 1.05, 
-              boxShadow: "0px 0px 15px rgba(255, 193, 7, 0.4)" 
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3.5 bg-[#111111] text-white font-bold uppercase tracking-wide rounded-full transition-colors duration-300 hover:bg-[#FFC107] hover:text-gray-900 shadow-md"
-          >
-            Download Resume
-          </motion.button>
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-[0_0_25px_rgba(139,92,246,0.2)] hover:shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all"
+            >
+              Download Resume
+            </motion.button>
+            <motion.button 
+              whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.1)" }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[10px] rounded-full transition-all"
+            >
+              Contact Me
+            </motion.button>
+          </motion.div>
 
         </motion.div>
 

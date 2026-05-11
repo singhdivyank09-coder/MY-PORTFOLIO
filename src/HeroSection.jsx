@@ -1,14 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
-// Staggered animation variants for text elements
+// Staggered animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
@@ -18,83 +19,111 @@ const itemVariants = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
   },
 };
 
 const HeroSection = () => {
   return (
     <motion.section 
+      id="home"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative min-h-screen flex flex-col md:flex-row font-sans overflow-hidden bg-white"
+      transition={{ duration: 1 }}
+      className="relative min-h-screen flex flex-col md:flex-row font-sans overflow-hidden bg-[#030014]"
     >
+      {/* Background Decorative Elements */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[20%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+
       {/* LEFT SIDE: Text Content */}
-      <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center px-6 py-16 md:py-0 z-10">
+      <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center px-8 py-20 md:py-0 z-10">
         <motion.div 
-          className="flex flex-col items-start justify-center space-y-6 max-w-xl mx-auto md:mr-12 xl:mr-24 text-left"
+          className="flex flex-col items-start justify-center space-y-8 max-w-xl mx-auto md:ml-12 lg:ml-20"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.span variants={itemVariants} className="text-gray-900 font-bold tracking-[0.2em] uppercase text-sm md:text-base">
-            Hi There!
-          </motion.span>
-          
-          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
-            I'M <span className="text-[#FFC107]">DIVYANK</span>
-          </motion.h1>
-          
-          <motion.div variants={itemVariants} className="inline-block bg-[#FFC107] text-gray-900 font-bold px-4 py-1.5 text-sm md:text-base uppercase tracking-wider rounded-sm shadow-sm">
-            Aspiring Full Stack Developer / AI Enthusiast
+          <motion.div variants={itemVariants} className="flex items-center space-x-3">
+            <div className="w-8 h-[2px] bg-purple-500" />
+            <span className="text-purple-400 font-bold tracking-[0.3em] uppercase text-xs md:text-sm">
+              Creative Developer
+            </span>
           </motion.div>
           
-          <motion.p variants={itemVariants} className="text-gray-600 text-base md:text-lg leading-relaxed max-w-md">
-            Passionate about building scalable modern web applications and integrating intelligent AI solutions to solve complex problems.
+          <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter">
+            DIVYANK <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-300% animate-gradient">SINGH.</span>
+          </motion.h1>
+          
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
+            {["React.js", "Python", "AI/ML"].map((tech) => (
+              <span key={tech} className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-bold uppercase tracking-wider text-gray-300">
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+          
+          <motion.p variants={itemVariants} className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-md font-medium opacity-80">
+            Architecting high-performance digital experiences and intelligent AI solutions for the future.
           </motion.p>
           
           <motion.button 
             variants={itemVariants}
-            whileHover={{ 
-              scale: 1.05, 
-              boxShadow: "0px 0px 20px rgba(255, 193, 7, 0.6)" 
-            }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => {
               const element = document.getElementById('about');
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="mt-4 px-8 py-4 bg-[#FFC107] text-gray-900 font-bold uppercase tracking-wide rounded-full transition-colors duration-300 hover:bg-[#ffcd38]"
+            className="group relative px-10 py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black uppercase tracking-[0.2em] text-xs rounded-full overflow-hidden shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(139,92,246,0.5)]"
           >
-            More About Me
+            <span className="relative z-10 flex items-center">
+              Explore My Journey <ArrowRight size={16} className="ml-3 group-hover:translate-x-2 transition-transform duration-300" />
+            </span>
           </motion.button>
         </motion.div>
       </div>
 
-      {/* RIGHT SIDE: Strictly Grayscale Image Full Screen Half */}
+      {/* RIGHT SIDE: Profile Image with Futuristic Overlay */}
       <motion.div 
-        className="w-full md:w-1/2 min-h-[50vh] md:min-h-screen relative overflow-hidden"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        className="w-full md:w-1/2 h-[60vh] md:h-screen relative"
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Image Container with continuous subtle zoom */}
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#030014] z-10 hidden md:block" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent z-10 md:hidden" />
+        
         <motion.div 
-          className="absolute inset-0 w-full h-full"
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+          className="w-full h-full"
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
         >
           <img 
             src="/profile.jpg" 
             alt="Divyank Portrait" 
-            className="w-full h-full object-cover object-[center_top] grayscale"
+            className="w-full h-full object-cover object-[center_20%] grayscale contrast-[1.1] brightness-[0.8]"
           />
         </motion.div>
+        
+        {/* Subtle holographic line effect */}
+        <div className="absolute inset-0 opacity-20 z-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
       </motion.div>
 
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% auto;
+          animation: gradient 5s linear infinite;
+        }
+      `}} />
     </motion.section>
   );
 };
