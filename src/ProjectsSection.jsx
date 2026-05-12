@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Code2 } from "lucide-react";
 
@@ -37,7 +37,7 @@ const ProjectsSection = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useState(() => {
+  useEffect(() => {
     const fetchProjects = async () => {
       try {
         const response = await fetch("https://portfolio-backend-08kr.onrender.com/api/projects");
