@@ -54,6 +54,19 @@ const ResumeSection = () => {
           <motion.h2 variants={cardVariants} className="text-5xl md:text-7xl font-black text-white">
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Resume.</span>
           </motion.h2>
+          
+          <motion.div variants={cardVariants} className="mt-10">
+            <motion.a
+              href="/resume.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center space-x-3 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl text-xs font-black uppercase tracking-[0.2em] text-white hover:bg-white/10 hover:border-purple-500/50 transition-all duration-300 shadow-xl"
+            >
+              <span>Download Full CV</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </motion.a>
+          </motion.div>
         </motion.div>
 
         {/* Resume Layout - 2 Columns */}

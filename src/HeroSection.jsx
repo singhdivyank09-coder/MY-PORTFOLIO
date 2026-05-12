@@ -67,22 +67,41 @@ const HeroSection = () => {
             Architecting high-performance digital experiences and intelligent AI solutions for the future.
           </motion.p>
           
-          <motion.button 
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              const element = document.getElementById('about');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="group relative px-10 py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black uppercase tracking-[0.2em] text-xs rounded-full overflow-hidden shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(139,92,246,0.5)]"
-          >
-            <span className="relative z-10 flex items-center">
-              Explore My Journey <ArrowRight size={16} className="ml-3 group-hover:translate-x-2 transition-transform duration-300" />
-            </span>
-          </motion.button>
+          <div className="flex flex-wrap gap-5">
+            <motion.button 
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const element = document.getElementById('projects');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="group relative px-8 md:px-10 py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black uppercase tracking-[0.2em] text-xs rounded-full overflow-hidden shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(139,92,246,0.5)]"
+            >
+              <span className="relative z-10 flex items-center">
+                View Projects <ArrowRight size={16} className="ml-3 group-hover:translate-x-2 transition-transform duration-300" />
+              </span>
+            </motion.button>
+
+            <motion.button 
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="group relative px-8 md:px-10 py-5 bg-white/5 border border-white/10 text-white font-black uppercase tracking-[0.2em] text-xs rounded-full transition-all duration-500 hover:bg-white/10 hover:border-purple-500/50"
+            >
+              <span className="relative z-10 flex items-center">
+                Contact Me
+              </span>
+            </motion.button>
+          </div>
         </motion.div>
       </div>
 

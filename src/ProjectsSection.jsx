@@ -2,54 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Code2 } from "lucide-react";
 
-// Updated Dummy Project Data
-const projectsData = [
-  {
-    id: 1,
-    title: "Main Portfolio Project",
-    description: "A premium, modern portfolio website showcasing my skills, projects, and journey as a developer.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop",
-    tags: ["React", "Tailwind CSS", "Framer Motion"],
-    category: "Web",
-    linkDemo: "#",
-    linkCode: "#",
-    isComingSoon: false,
-  },
-  {
-    id: 2,
-    title: "AI Image Generator",
-    description: "An artificial intelligence tool that generates stunning images from text prompts using advanced ML models.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop",
-    tags: ["Python", "React", "OpenAI API"],
-    category: "AI",
-    linkDemo: "#",
-    linkCode: "#",
-    isComingSoon: true,
-  },
-  {
-    id: 3,
-    title: "E-Commerce Dashboard",
-    description: "A full-stack admin dashboard for managing products, orders, and user analytics with real-time charts.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-    tags: ["Next.js", "Node.js", "MongoDB"],
-    category: "Web",
-    linkDemo: "#",
-    linkCode: "#",
-    isComingSoon: true,
-  },
-  {
-    id: 4,
-    title: "SaaS Landing Page UI",
-    description: "A high-converting, modern landing page design exploration for a hypothetical SaaS startup.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-    tags: ["Figma", "UI/UX", "Tailwind"],
-    category: "UI",
-    linkDemo: "#",
-    linkCode: "#",
-    isComingSoon: false,
-  },
-];
-
+// The projectsData array has been removed to favor live data from the backend.
 const categories = ["All", "Web", "AI", "UI"];
 
 // Animation Variants
@@ -107,8 +60,7 @@ const ProjectsSection = () => {
         }
       } catch (error) {
         console.error("Error fetching projects:", error);
-        // Fallback to initial dummy data if fetch fails
-        setProjects(projectsData);
+        setProjects([]);
       } finally {
         setLoading(false);
       }

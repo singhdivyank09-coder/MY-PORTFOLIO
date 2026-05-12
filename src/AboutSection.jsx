@@ -101,16 +101,24 @@ const AboutSection = () => {
           </motion.div>
           
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-            <motion.button 
+            <motion.a
+              href="/resume.pdf"
+              download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-[0_0_25px_rgba(139,92,246,0.2)] hover:shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all"
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-[0_0_25px_rgba(139,92,246,0.2)] hover:shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all flex items-center justify-center cursor-pointer"
             >
               Download Resume
-            </motion.button>
+            </motion.a>
             <motion.button 
               whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.1)" }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="px-8 py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[10px] rounded-full transition-all"
             >
               Contact Me
