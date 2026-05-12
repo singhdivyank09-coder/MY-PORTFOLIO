@@ -29,7 +29,7 @@ const SidebarContent = ({ activeSection, handleMenuClick }) => {
           </motion.div>
           <h2 className="text-white text-xl font-bold tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">DIVYANK</h2>
           <p className="text-gray-400 text-xs mt-1 uppercase tracking-widest font-medium opacity-80">Full Stack Developer, 
-              /nAI/ML Aspired </p>
+              AI/ML Aspired </p>
         </div>
 
         {/* Navigation Menu */}
