@@ -16,19 +16,36 @@ const ContactSection = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://portfolio-backend-08kr.onrender.com/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Submission Error:", error);
+      setSubmitStatus("error");
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      
       // Reset status message after 3 seconds
       setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -191,13 +208,17 @@ const ContactSection = () => {
                       ? "bg-gray-800 text-gray-500 cursor-not-allowed"
                       : submitStatus === "success"
                         ? "bg-green-600 text-white shadow-[0_0_30px_rgba(22,163,74,0.4)]"
-                        : "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:shadow-[0_0_50px_rgba(139,92,246,0.5)]"
+                        : submitStatus === "error"
+                          ? "bg-red-600 text-white shadow-[0_0_30px_rgba(220,38,38,0.4)]"
+                          : "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:shadow-[0_0_50px_rgba(139,92,246,0.5)]"
                   }`}
                 >
                   {isSubmitting ? (
                     <span className="animate-pulse">Transmitting...</span>
                   ) : submitStatus === "success" ? (
                     <span>Mission Success!</span>
+                  ) : submitStatus === "error" ? (
+                    <span>Broadcast Error!</span>
                   ) : (
                     <>
                       <span>Broadcast Message</span>

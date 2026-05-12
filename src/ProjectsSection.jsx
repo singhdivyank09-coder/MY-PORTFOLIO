@@ -81,8 +81,43 @@ const cardVariants = {
 
 const ProjectsSection = () => {
   const [filter, setFilter] = useState("All");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredProjects = projectsData.filter(
+  useState(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("https://portfolio-backend-08kr.onrender.com/api/projects");
+        const json = await response.json();
+        
+        if (json.success) {
+          // Map backend data to frontend format
+          const mappedProjects = json.data.map((p, index) => ({
+            id: p._id || index,
+            title: p.title,
+            description: p.description,
+            image: p.image || "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop",
+            tags: p.tags || [],
+            category: p.category || "Web",
+            linkDemo: p.link || "#",
+            linkCode: p.github || "#",
+            isComingSoon: p.isComingSoon || false,
+          }));
+          setProjects(mappedProjects);
+        }
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        // Fallback to initial dummy data if fetch fails
+        setProjects(projectsData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  const filteredProjects = projects.filter(
     (project) => filter === "All" || project.category === filter
   );
 
@@ -138,8 +173,14 @@ const ProjectsSection = () => {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+          {loading ? (
+            <div className="col-span-full py-20 text-center">
+              <div className="inline-block w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin mb-4" />
+              <p className="text-gray-500 font-black uppercase tracking-widest animate-pulse">Synchronizing Data...</p>
+            </div>
+          ) : (
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project) => (
               <motion.div
                 layout
                 key={project.id}
@@ -207,8 +248,9 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </AnimatePresence>
+              ))}
+            </AnimatePresence>
+          )}
         </motion.div>
 
       </div>
