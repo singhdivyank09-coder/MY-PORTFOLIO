@@ -68,7 +68,7 @@ const certificatesData = [
     date: "Collaborator",
     category: "Milestones",
     logo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/C-DAC_logo.svg/1200px-C-DAC_logo.svg.png",
-    description: "Partnered in technical implementations for developing smart automated kiosks delivering digital public utilities to rural communities in Pune.",
+    description: "Partnered in technical implementations for developing smart automated kiosks delivering digital public utilities to rural communities in Assam.",
     tags: ["IoT", "Public Utility", "CDAC"],
     status: "Completed",
     verificationLink: "https://www.cdac.in/",
