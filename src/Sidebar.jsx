@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, User, Code, Briefcase, FileText, Mail, Menu, X } from "lucide-react";
+import { Home, User, Code, Briefcase, FileText, Award, Mail, Menu, X } from "lucide-react";
 
 const SidebarContent = ({ activeSection, handleMenuClick }) => {
   const menuItems = [
@@ -9,6 +9,7 @@ const SidebarContent = ({ activeSection, handleMenuClick }) => {
     { name: "Skills", icon: Code },
     { name: "Projects", icon: Briefcase },
     { name: "Resume", icon: FileText },
+    { name: "Certificates", icon: Award },
     { name: "Contact", icon: Mail },
   ];
 

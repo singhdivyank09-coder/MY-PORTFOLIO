@@ -5,6 +5,7 @@ import SkillsSection from './SkillsSection'
 import ProjectsSection from './ProjectsSection'
 import CertificateSection from './CertificateSection'
 import ResumeSection from './ResumeSection'
+import CertificatesSection from './CertificatesSection'
 import ContactSection from './ContactSection'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <ProjectsSection />
         <CertificateSection />
         <ResumeSection />
+        <CertificatesSection />
         <ContactSection />
       </main>
     </div>
